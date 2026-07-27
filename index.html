@@ -6,43 +6,48 @@
 <title>Julius Scharinger</title>
 <style>
   :root{
-    --bg:#FCFBF8;
-    --card:#FFFFFF;
+    --bg-a:#A9C0F5; --bg-b:#89D9E8; --bg-c:#D8C6F7;
+    --card:rgba(255,255,255,0.42);
+    --card-solid:#FFFFFF;
     --ink:#1B1C20;
-    --ink-soft:rgba(27,28,32,0.52);
-    --line:rgba(27,28,32,0.08);
-    --accent-a:#0FB6A6;
-    --accent-b:#FF6B4A;
-    --pill:#F6FBFA;
-    --pill-hover:#EAF6F4;
-    --shadow:0 18px 40px rgba(27,28,32,0.08), 0 2px 8px rgba(27,28,32,0.04);
+    --ink-soft:rgba(27,28,32,0.55);
+    --line:rgba(255,255,255,0.55);
+    --accent-a:#4F63E4;
+    --accent-b:#3EC7E0;
+    --pill:rgba(255,255,255,0.40);
+    --pill-hover:rgba(255,255,255,0.58);
+    --shadow:0 18px 40px rgba(30,40,90,0.18), 0 2px 8px rgba(30,40,90,0.08);
+    --blur:16px;
     --font:-apple-system,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   }
   @media (prefers-color-scheme: dark){
     :root{
-      --bg:#0E1416;
-      --card:#161D1F;
+      --bg-a:#1B2340; --bg-b:#143A42; --bg-c:#241B3D;
+      --card:rgba(255,255,255,0.06);
+      --card-solid:#161D1F;
       --ink:#EFF5F4;
       --ink-soft:rgba(239,245,244,0.55);
-      --line:rgba(239,245,244,0.09);
-      --accent-a:#37D6C4;
-      --accent-b:#FF8566;
-      --pill:#1B2325;
-      --pill-hover:#212B2D;
-      --shadow:0 18px 40px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3);
+      --line:rgba(255,255,255,0.14);
+      --accent-a:#7B90FF;
+      --accent-b:#5FE0E8;
+      --pill:rgba(255,255,255,0.05);
+      --pill-hover:rgba(255,255,255,0.10);
+      --shadow:0 18px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
     }
   }
   :root[data-theme="light"]{
-    --bg:#FCFBF8; --card:#FFFFFF; --ink:#1B1C20; --ink-soft:rgba(27,28,32,0.52);
-    --line:rgba(27,28,32,0.08); --accent-a:#0FB6A6; --accent-b:#FF6B4A;
-    --pill:#F6FBFA; --pill-hover:#EAF6F4;
-    --shadow:0 18px 40px rgba(27,28,32,0.08), 0 2px 8px rgba(27,28,32,0.04);
+    --bg-a:#A9C0F5; --bg-b:#89D9E8; --bg-c:#D8C6F7;
+    --card:rgba(255,255,255,0.42); --card-solid:#FFFFFF; --ink:#1B1C20; --ink-soft:rgba(27,28,32,0.55);
+    --line:rgba(255,255,255,0.55); --accent-a:#4F63E4; --accent-b:#3EC7E0;
+    --pill:rgba(255,255,255,0.40); --pill-hover:rgba(255,255,255,0.58);
+    --shadow:0 18px 40px rgba(30,40,90,0.18), 0 2px 8px rgba(30,40,90,0.08);
   }
   :root[data-theme="dark"]{
-    --bg:#0E1416; --card:#161D1F; --ink:#EFF5F4; --ink-soft:rgba(239,245,244,0.55);
-    --line:rgba(239,245,244,0.09); --accent-a:#37D6C4; --accent-b:#FF8566;
-    --pill:#1B2325; --pill-hover:#212B2D;
-    --shadow:0 18px 40px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3);
+    --bg-a:#1B2340; --bg-b:#143A42; --bg-c:#241B3D;
+    --card:rgba(255,255,255,0.06); --card-solid:#161D1F; --ink:#EFF5F4; --ink-soft:rgba(239,245,244,0.55);
+    --line:rgba(255,255,255,0.14); --accent-a:#7B90FF; --accent-b:#5FE0E8;
+    --pill:rgba(255,255,255,0.05); --pill-hover:rgba(255,255,255,0.10);
+    --shadow:0 18px 40px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
   }
 
   *{box-sizing:border-box;}
@@ -50,7 +55,7 @@
   body{
     height:100vh;
     height:100dvh;
-    background:var(--bg);
+    background:linear-gradient(155deg,var(--bg-a),var(--bg-b) 55%,var(--bg-c));
     color:var(--ink);
     font-family:var(--font);
     display:flex;align-items:center;justify-content:center;
@@ -62,6 +67,8 @@
   .card{
     width:100%;max-width:340px;
     background:var(--card);
+    backdrop-filter:blur(var(--blur)) saturate(170%);
+    -webkit-backdrop-filter:blur(var(--blur)) saturate(170%);
     border:1px solid var(--line);
     border-radius:24px;
     box-shadow:var(--shadow);
@@ -92,7 +99,7 @@
     background:linear-gradient(135deg,var(--accent-a),var(--accent-b));
     display:flex;align-items:center;justify-content:center;
     font-size:26px;font-weight:700;color:#fff;letter-spacing:0.02em;
-    box-shadow:0 0 0 4px var(--card), 0 8px 20px rgba(0,0,0,0.16);
+    box-shadow:0 0 0 4px var(--pill-hover), 0 8px 20px rgba(0,0,0,0.16);
   }
 
   h1{position:relative;margin:0 0 2px;font-size:19px;font-weight:800;letter-spacing:-0.01em;}
@@ -114,7 +121,7 @@
   .link:focus-visible{outline:2px solid var(--accent-a);outline-offset:2px;}
   .icon{
     width:30px;height:30px;border-radius:9px;flex-shrink:0;
-    background:var(--card);border:1px solid var(--line);color:var(--accent-a);
+    background:var(--pill-hover);border:1px solid var(--line);color:var(--accent-a);
     display:flex;align-items:center;justify-content:center;
   }
   .text{display:flex;flex-direction:column;gap:0;min-width:0;}
